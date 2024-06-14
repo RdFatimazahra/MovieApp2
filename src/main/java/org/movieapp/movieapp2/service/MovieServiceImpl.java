@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MovieServiceImpl implements MovieService {
@@ -32,5 +33,20 @@ public class MovieServiceImpl implements MovieService {
         movieDao.deleteById(id);
     }
 
+    @Override
+    public Movie updateMovie(int id, Movie movie) {
+        Optional<Movie> existingMovie = movieDao.findById(id);
+        if (existingMovie.isPresent()) {
+            Movie updatedMovie = existingMovie.get();
+            updatedMovie.setTitre(movie.getTitre());
+            updatedMovie.setDateSortie(movie.getDateSortie());
+            updatedMovie.setGenre(movie.getGenre());
+            updatedMovie.setRealisateur(movie.getRealisateur());
+            updatedMovie.setNote(movie.getNote());
+            return movieDao.save(updatedMovie);
+        } else {
+            return null;
+        }
+    }
 
 }
