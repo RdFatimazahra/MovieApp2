@@ -6,23 +6,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
-public class Movie {
+public class Utilisateur {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private  int idMovie;
-    private  String  titre;
-    private String dateSortie;
-    private  String genre;
-    private  String  realisateur;
-    private int note;
+    private int idUser;
+    private String userName;
+    private String password;
 
 }

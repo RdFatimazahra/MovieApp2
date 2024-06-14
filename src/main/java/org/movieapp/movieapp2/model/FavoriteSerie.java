@@ -14,15 +14,17 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class Movie {
-
+public class FavoriteSerie {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private  int idMovie;
-    private  String  titre;
-    private String dateSortie;
-    private  String genre;
-    private  String  realisateur;
-    private int note;
+    private int idFovoriteSerie;
 
+    @ManyToOne
+    @JoinColumn(name = "idSerie")
+    private Serie serie;
+
+    @ManyToOne
+    @JoinColumn(name = "idUser")
+    private Utilisateur utilisateur;
 }
+
